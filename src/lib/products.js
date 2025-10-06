@@ -14,3 +14,10 @@ export function getAllProducts() {
 export function getProductById(id) { 
     return products.find(product => product.id === id);
 } 
+
+export function addProduct(productData) {
+    const newId = (products.length + 1).toString();
+    const newProduct = { id: newId, ...productData };
+    products.push(newProduct);
+    return newProduct;
+}
