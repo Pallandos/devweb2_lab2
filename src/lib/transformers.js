@@ -20,3 +20,22 @@ export class ProductRessource {
         });
     }
 }
+
+export class ProductCollection {
+    constructor(products, metadatas = {}) {
+        this.products = products;
+        this.metadatas = metadatas;
+    }
+
+    toResponse() {
+        return {
+            data: ProductRessource.collection(this.products),
+            meta: {
+                total: this.products.length,
+                storeName: "Megastore",
+                storeProductsLink: "https://megastore.com/products",
+                ...this.metadatas
+            }
+        }
+    }
+}
