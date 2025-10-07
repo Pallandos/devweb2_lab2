@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "name": "TV",
+    "description": "Best TV",
+    "price": 499.99
+  },
+  {
+    "id": "2",
+    "name": "iPhone",
+    "description": "Best iPhone",
+    "price": 999.99
+  },
+  {
+    "id": "3",
+    "name": "Chromecast",
+    "description": "Best Chromecast",
+    "price": 35.98
+  },
+  {
+    "id": "4",
+    "name": "Glasses",
+    "description": "Best Glasses",
+    "price": 150
+  },
+  {
+    "id": "5",
+    "name": "Laptop",
+    "description": "High-performance laptop",
+    "price": 1299.99
+  },
+  {
+    "id": "6",
+    "name": "Headphones",
+    "description": "Noise-cancelling wireless headphones",
+    "price": 199.99
+  },
+  {
+    "id": "7",
+    "name": "Smartwatch",
+    "description": "Fitness tracking smartwatch",
+    "price": 299.99
+  },
+  {
+    "id": "8",
+    "name": "PC gamer",
+    "description": "A very powerful PC",
+    "price": 9600
+  }
+]

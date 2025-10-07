@@ -1,23 +1,43 @@
-// lib/products.js 
+// lib/products.js
 
-export const products = [ 
-    { id: "1", name: "TV", description: "Best TV", price: 499.99}, 
-    { id: "2", name: "iPhone", description: "Best iPhone", price: 999.99}, 
-    { id: "3", name: "Chromecast", description: "Best Chromecast", price: 35.98}, 
-    { id: "4", name: "Glasses", description: "Best Glasses", price: 150.00} 
-]; 
+import fs from 'fs/promises';
+import path from 'path';
 
-export function getAllProducts() { 
-    return products; 
-} 
+const PRODUCTS_FILE = path.join(process.cwd(), 'data', 'products.json');
 
-export function getProductById(id) { 
+async function readProducts() {
+    try {
+        const data = await fs.readFile(PRODUCTS_FILE, 'utf8');
+        return JSON.parse(data);
+    } catch (error) {
+        console.error('Error reading products file:', error);
+        return [];
+    }
+}
+
+async function writeProducts(products) {
+    try {
+        await fs.writeFile(PRODUCTS_FILE, JSON.stringify(products, null, 2));
+    } catch (error) {
+        console.error('Error writing products file:', error);
+        throw error;
+    }
+}
+
+export async function getAllProducts() {
+    return await readProducts();
+}
+
+export async function getProductById(id) {
+    const products = await readProducts();
     return products.find(product => product.id === id);
-} 
+}
 
-export function addProduct(productData) {
+export async function addProduct(productData) {
+    const products = await readProducts();
     const newId = (products.length + 1).toString();
     const newProduct = { id: newId, ...productData };
     products.push(newProduct);
+    await writeProducts(products);
     return newProduct;
 }

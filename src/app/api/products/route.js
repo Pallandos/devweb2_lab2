@@ -6,7 +6,7 @@ import { getAllProducts, getProductById, addProduct } from '../../../lib/product
 // GET API endpoint
 
 export async function GET() {
-    const products = getAllProducts();
+    const products = await getAllProducts();
     return NextResponse.json(products, { status: 200 });
 }
 
@@ -27,7 +27,7 @@ export async function POST(request) {
         }
 
         // Add the product
-        const newProduct = addProduct({ name, description, price });
+        const newProduct = await addProduct({ name, description, price });
 
         return NextResponse.json(newProduct, { status: 201 });
     } catch (error) {
