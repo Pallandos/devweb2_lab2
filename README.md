@@ -17,3 +17,13 @@ I created helper function to handle the file reading and made the requests funct
 ### Activity 4
 
 I added PUT endpoint, which is valide if any combination of `price`, `description` and `price`. It will updates the product object with a 200 status. 
+
+### Activity 5
+
+The new route for search is `GET /api/products/search`. It takes one or more of the following parameters:
+
+- `name` (str) : **case-sensitive** name search
+- `minPrice` : min price
+- `maxPrice` : max price
+
+Example : `/api/products/search?name=tv&maxPrice=600` search for a products which name includes *tv* and has a price less to 600.

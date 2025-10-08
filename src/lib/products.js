@@ -55,3 +55,27 @@ export async function updateProduct(id, updateData) {
     await writeProducts(products);
     return updatedProduct;
 }
+
+export async function searchProducts(filters) {
+    const products = await readProducts();
+    const { name, minPrice, maxPrice } = filters;
+    
+    return products.filter(product => {
+        // Case-insensitive name search
+        if (name && !product.name.toLowerCase().includes(name.toLowerCase())) {
+            return false;
+        }
+        
+        // Min price filter
+        if (minPrice !== undefined && product.price < minPrice) {
+            return false;
+        }
+        
+        // Max price filter
+        if (maxPrice !== undefined && product.price > maxPrice) {
+            return false;
+        }
+        
+        return true;
+    });
+}
