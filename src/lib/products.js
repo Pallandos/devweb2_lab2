@@ -41,3 +41,17 @@ export async function addProduct(productData) {
     await writeProducts(products);
     return newProduct;
 }
+
+export async function updateProduct(id, updateData) {
+    const products = await readProducts();
+    const productIndex = products.findIndex(product => product.id === id);
+    
+    if (productIndex === -1) {
+        return null;
+    }
+    
+    const updatedProduct = { ...products[productIndex], ...updateData };
+    products[productIndex] = updatedProduct;
+    await writeProducts(products);
+    return updatedProduct;
+}
